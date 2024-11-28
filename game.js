@@ -28,7 +28,7 @@ startGame = () => {
 };
 
 getNewQuestion = () => {
-    questionImage.src=`/problems/images/${QUESTION}.png`
+    questionImage.src=`problems/images/${QUESTION}.png`
     acceptingAnswers = true;
 };
 
@@ -38,7 +38,7 @@ choices.forEach(choice => {
         acceptingAnswers = false;
         const selectedChoice = e.target;
         const selectedAnswer = selectedChoice.dataset["number"];
-        fetch(`/answers/${QUESTION.slice(0,4)}/answers.json`)
+        fetch(`answers/${QUESTION.slice(0,4)}/answers.json`)
         .then((res) => res.text())
         .then((text) => {
             var problem = JSON.parse(text).problems.filter(obj => {return obj.number == NUMBER})[0];
@@ -57,7 +57,7 @@ choices.forEach(choice => {
 });
 
 displayAnswer = (url) => {
-    answerImage.src = `/answers/images/${QUESTION}.png`
+    answerImage.src = `answers/images/${QUESTION}.png`
     answerVideoText.innerText = "Solution Video";
     answerVideo.src=url;
     answerVideo.style.height="45rem";
